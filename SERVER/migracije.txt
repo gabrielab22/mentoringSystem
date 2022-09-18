@@ -1,0 +1,5 @@
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass // upaltii migracije nesto seta 
+node_modules/.bin/sequelize db:migrate // naredba za miracije 
+npx sequelize-cli db:migrate
+npx sequelize-cli db:seed:all
+npx sequelize-cli db:seed:undo
