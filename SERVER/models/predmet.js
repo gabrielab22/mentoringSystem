@@ -42,8 +42,8 @@ module.exports = (sequelize, DataTypes) => {
 
   Predmet.associate = models => {
     Predmet.hasMany(models.Upis, {
-      foreignKey: "id",
-      sourceKey: "predmet_id"
+      foreignKey: "predmet_id",
+      sourceKey: "id"
     });
   };
   return Predmet;

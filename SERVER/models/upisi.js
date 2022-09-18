@@ -12,16 +12,22 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false
         }
-    });
+    },
+        {
+
+            freezeTableName: true,
+            tableName: 'upisi'
+
+        });
 
     Upis.associate = models => {
         Upis.belongsTo(models.Korisnik, {
-            foreignKey: "id",
-            sourceKey: "student_id"
+            foreignKey: "student_id",
+            sourceKey: "id"
         });
         Upis.belongsTo(models.Predmet, {
-            foreignKey: "id",
-            sourceKey: "predmet_id"
+            foreignKey: "predmet_id",
+            sourceKey: "id"
         });
     };
     return Upis;

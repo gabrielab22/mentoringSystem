@@ -1,4 +1,3 @@
-const { DataTypes } = require("sequelize/types/query-types");
 
 module.exports = (sequelize, DataTypes) => {
     const Korisnik = sequelize.define("Korisnik", {
@@ -23,12 +22,17 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.ENUM('none', 'redovni', 'izvanredni'),
             allowNull: false
         }
-    });
+    },
+        {
+            freezeTableName: true,
+            tableName: 'Korisnici'
+        }
+    );
 
     Korisnik.associate = models => {
         Korisnik.hasOne(models.Upis, {
-            foreignKey: "id",
-            sourceKey: "student_id"
+            foreignKey: "student_id",
+            sourceKey: "id"
         });
     };
     return Korisnik;
