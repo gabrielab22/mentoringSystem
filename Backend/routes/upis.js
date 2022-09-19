@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
     res.json(upisi);
 });
 
-router.post("/Create", async (req, res) => {
+router.post("/create", async (req, res) => {
     const upis = req.body;
 
     const noviUpis = await Upis.create(upis);

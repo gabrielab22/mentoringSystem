@@ -39,4 +39,21 @@ router.delete("/delete", async (req, res) => {
     res.json(noviKorisnik);
 });
 
+router.post("/login", async (req, res) => {
+    const { email, password } = req.body;
+
+    const korisnik = await Korisnik.findOne({ where: { email: email } });
+
+    if (!korisnik) res.json({ error: "Korisnik nije pronaden!" });
+
+    const result = password.localeCompare(korisnik.password);
+    if (result) res.json({ error: "Netocan email i lozinka" });
+
+    const accessToken = sign({ email: korisnik.email, id: korisnik.id }, "gabriela");
+
+    res.json({ accessToken, ...korisnik.dataValues });
+});
+
+module.exports = router;
+
 module.exports = router;
